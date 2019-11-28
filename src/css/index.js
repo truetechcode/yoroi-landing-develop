@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Overflow = styled.div `
+const Overflow = styled.div`
   @media (max-width: 700px) {
     margin-top: 46px;
   }
@@ -12,7 +12,7 @@ const Overflow = styled.div `
   display: flex;
 `;
 
-const OverflowS = styled.div `
+const OverflowS = styled.div`
   @media (max-width: 700px) {
     margin-top: 43px;
   }
@@ -24,7 +24,7 @@ const OverflowS = styled.div `
   display: flex;
 `;
 
-const Container = styled.div `
+const Container = styled.div`
   @media (max-width: 700px) {
     margin-right: 8px;
     margin-left: 8px;
@@ -36,28 +36,40 @@ const Container = styled.div `
   padding-right: 20px;
 `;
 
-const ContainerB = styled.div `
+const ContainerB = styled.div`
   margin-left: -430px;
   max-width: 1920px;
 `;
 
-const ContainerGrey = styled.div `
-  background-color: #f4f4f7;
+const ContainerGrey = styled.div`
+  /* background-color: #f4f4f7; */
+  height: 240px;	
+  width: 1400px;	
+  background-color: #F1F7FA;
 `;
 
-const ContainerBlue = styled.div `
+const ContainerBlue = styled.div`
   color: white;
   background-image: url('./assets/background_square.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
 `;
 
-const SectionTitle = styled.div `
-  font-size: 30px;
+const SectionTitle = styled.div`
+  /* font-size: 30px; */
   margin-bottom: 23px;
   width: 100%;
-  text-align: center;
+  /* text-align: center; */
   padding-top:60px;
+
+  height: 32px;	
+  /* width: 211px;	 */
+  color: #215F68;	
+  font-family: Rubik;	
+  font-size: 24px;	
+  font-weight: bold;	
+  line-height: 32px;	
+  text-align: center;
 `;
 
 const SectionTitleLight = styled(SectionTitle)`

@@ -38,7 +38,7 @@ const data = [
 const navFixed = {
   width: '100%',
   height: 60,
-  backgroundImage: "linear-gradient(82deg,#1a44b7,#4760ff 30%)",
+  background: 'linear-gradient(41deg, #0C4146 0%, #48A1B0 100%)',
   color: "#fff",
   left: 0,
   top: 0,
@@ -60,12 +60,13 @@ const Content = styled.div`
 const NavFixed = styled.div`
   flex: 1;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
   line-height: 21px;
   font-size: 15px;
   height: 24px;
   font-weight: 500;
   margin: 5px;
+  /* background: #3b95a3; */
   a{    
     display: inline-block;
     text-decoration: none;
@@ -75,7 +76,7 @@ const NavFixed = styled.div`
       margin-left: -65px
     }
     &.active{
-      border-bottom: 2px solid white;
+      /* border-bottom: 2px solid white; */
     }
     &:link,
     &:visited{
@@ -87,16 +88,15 @@ const NavFixed = styled.div`
 const Logo = styled.img`
   font-size: 1.5em;
   text-align: center;
-  max-width: 128px;
-  height: 35px;
- 
+  height: 35px;	
+  width: 200.54px; 
 `;
 
 const VTitleList = styled.div`
   flex: 1;
   margin: 4px;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
  
   font-size: 15px;
   height: 24px;
@@ -108,8 +108,8 @@ const VTitleList = styled.div`
     height: 23px;
     
     &.active{
-      border-bottom: 2px solid white;
-      padding-bottom: 0.5px;      
+      /* border-bottom: 2px solid white;
+      padding-bottom: 0.5px;       */
     }
 
     &:link,   
@@ -132,28 +132,32 @@ const VTitleList = styled.div`
  */
 const Background = styled.div`
   position: relative;
-  width: 2691px;
-  height: ${p => (p.hasOffset ? '1062px' : '1035px')};
+  /* width: 2691px;
+  height: ${p => (p.hasOffset ? '1062px' : '1035px')}; */
 
   @media (min-width: 700px) {
-    height: ${p => (p.hasOffset ? '1062px' : '1035px')};
-    top:  ${p => (p.hasOffset ? '-1275px' : '-900px')}; ;
-    right: ${p => (p.hasOffset ? '640px' : '730px')}; 
+    /* height: ${p => (p.hasOffset ? '1062px' : '1035px')}; */
+    top:  ${p => (p.hasOffset ? '-1275px' : '-120px')}; ;
+    right: ${p => (p.hasOffset ? '640px' : '120px')}; 
   }
   @media (max-width: 700px) {
-    height: ${p => (p.hasOffset ? '1062px' : '1035px')};
+    /* height: ${p => (p.hasOffset ? '1062px' : '1035px')}; */
     top: -867px;
     right: 23px;
   }
 
-  transform: skew(56deg, -31deg);
-  border-radius: 30px;
-  background-image: ${p => (p.hasOffset ? 'linear-gradient(82deg, #1a44b7, #4760ff 30%)' : 'linear-gradient(53.05deg, #1D45BA 0%, #1F47BC 6%, #2C51C7 55%, #3154CB 100%)')};
+  /* transform: skew(56deg, -31deg);
+  border-radius: 30px; */
+  height: 935px;	
+  width: 1402px;	
+  transform: scaleX(-1);
+  background-image: url('../assets/designAssets/Assets/photos/start_page.jpg'); /*${p => (p.hasOffset ? 'linear-gradient(82deg, #1a44b7, #4760ff 30%)' : 'linear-gradient(53.05deg, #1D45BA 0%, #1F47BC 6%, #2C51C7 55%, #3154CB 100%)')};*/
+  background-size: cover;
   z-index: -3;
 `;
 
 const BackgroundB = styled.div`
-  position: relative;
+  /* position: relative;
   width: 2450px;
   height: ${p => (p.hasOffset ? '270px' : '912px')};
   border-radius: 30px;
@@ -171,13 +175,13 @@ const BackgroundB = styled.div`
     height: ${p => (p.hasOffset ? '926px' : '912px')};
     top:  ${p => (p.hasOffset ? '-696px' : '-933px')}; ;
     right: -31px;
-  }
+  } */
   
 }
 `;
 
 const BackgroundC = styled.div`
-  position: relative;
+  /* position: relative;
   width: 2100px;
   border-radius: 30px;
   transform: skew(56deg, -31deg);
@@ -194,7 +198,7 @@ const BackgroundC = styled.div`
     top: ${p => (p.hasOffset ? '-3090px' : '-1343px')};
     height: ${p => (p.hasOffset ? '727px' : '736px')};
     right: 480px;
-  }
+  } */
 `;
 
 const HeaderText = styled.span`
@@ -217,8 +221,13 @@ const HContainer = styled.div`
 
 
 const Selector = styled.select`
+  height: 20px;
+  width: 56.44px;
+  background-color: #fff0;
+  border: none;
   background: transparent;
-  border: 2px solid #FFFFFF;
+  text-transform: capitalize;
+  /* border: 2px solid #FFFFFF;
   border-radius: 8px;
   box-shadow: 0 2px 48px 0 rgba(83,81,81,0.5);
   color: white;
@@ -227,11 +236,21 @@ const Selector = styled.select`
   line-height: 18px;
   padding-left: 16px; 
   height: 48px;
-  width: 182px;                
+  width: 182px;                 */
   cursor: pointer;
+  &:after{
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;    
+  }
   &:hover{    
-    background-color: rgba(255,255,255,0.15);
-    box-shadow: 0 2px 48px 0 rgba(83,81,81,0.5);
+    /* background-color: rgba(255,255,255,0.15);
+    box-shadow: 0 2px 48px 0 rgba(83,81,81,0.5); */
     
       }
 `;
@@ -286,24 +305,19 @@ class App extends Component {
     const _Header = ({ locale, intl: { formatMessage } }) => (
       <HContainer>
         <HeaderAltSub>
-          <VTitleList>
-            <Link onClick={this.toggleMenu} to="/">
-              {formatMessage({ id: 'header.home' })}
-            </Link>
-          </VTitleList>
-          <VTitleList>
+          {/* <VTitleList>
             <Link onClick={this.toggleMenu} to="/about">
               {formatMessage({ id: 'header.about' })}
             </Link>
           </VTitleList>
           <VTitleList>
             <Link onClick={this.toggleMenu} to="/faq/1">
-              {formatMessage({ id: 'header.faq' })}
+              {formatMessage({ id: 'header.blog' })}
             </Link>
           </VTitleList>
           <VTitleList>
             <Link onClick={this.toggleMenu} to="/support">
-              {formatMessage({ id: 'header.support' })}
+              {formatMessage({ id: 'header.contact' })}
             </Link>
           </VTitleList>
           <VTitleList>
@@ -311,18 +325,18 @@ class App extends Component {
               value={locale.value}
               onChange={event => (locale.value = event.target.value)}
             >
-              <option value="en">ENGLISH</option>
+              <option value="en">ENG</option>
               <option value="ja">日本語</option>
               {/* <option value="ko">한국어</option>
               <option value="zh-Hans">简体中文</option>
               <option value="zh-Hant">繁體中文</option>
               <option value="ru">Pусский</option> */}
-            </Selector>
-          </VTitleList>
+  {/*          </Selector>
+          </VTitleList> */}
         </HeaderAltSub>
         <Container>
           <HeaderAlt>
-            <Logo  src="./assets/logo.png" alt="Yoroi is a Web Light Wallet for Cardano Secure Fast Simple" />
+            <Logo  src="./assets/designAssets/Assets/svg/EMURGOTEST-logo.svg" alt="Yoroi is a Web Light Wallet for Cardano Secure Fast Simple" />
             <div style={{ flex: 1 }} />
             <a style={{ color: 'white', fontSize: '30px' }} href="javascript:void(0);" className="icon" onClick={this.toggleMenu}>
               <i className="fa fa-bars" />
@@ -331,35 +345,27 @@ class App extends Component {
           <HeaderText>
             <VTitleList>
               <Link to="/">
-                <Logo style={{marginLeft: '-120px'}} src="./assets/logo.png" alt="Yoroi is a Web Light Wallet for Cardano Secure Fast Simple" />
+                <Logo style={{marginLeft: '-120px'}} src="./assets/designAssets/Assets/svg/EMURGOTEST-logo.svg" alt="Yoroi is a Web Light Wallet for Cardano Secure Fast Simple" />
               </Link>
             </VTitleList>
-            <div style={{ flex: 0.3 }} />
-            <VTitleList style={{ flex: 0.5, marginTop: '10px' }}>
-              <NavLink to="/" exact>{formatMessage({ id: 'header.home' })}</NavLink>
-            </VTitleList>
+            <div style={{ flex: 2 }} />
             <VTitleList style={{ flex: 0.5, marginTop: '10px' }}>
               <NavLink to="/about">{formatMessage({ id: 'header.about' })}</NavLink>
             </VTitleList>
             <VTitleList style={{ flex: 0.5, marginTop: '10px' }}>
-              <NavLink to="/faq/1">{formatMessage({ id: 'header.faq' })}</NavLink>
+              <NavLink to="/faq/1">{formatMessage({ id: 'header.blog' })}</NavLink>
             </VTitleList>
             <VTitleList style={{ flex: 0.5, marginTop: '10px'}}>
-              <NavLink to="/support">{formatMessage({ id: 'header.support' })}</NavLink>
+              <NavLink to="/support">{formatMessage({ id: 'header.contact' })}</NavLink>
             </VTitleList>
-            <div style={{ flex: 0.3 }} />
-            <VTitleList style={{zIndex: '15', visibility: `${downloadVisibility}` }} >
-              <Download />
-            </VTitleList>
-            <div style={{ flex: 0.1 }} />
-            <VTitleList style={{zIndex: '15'}}>
+            <VTitleList style={{flex: 0.5, marginTop: '10px', zIndex: '15'}}>
               <Selector
-                style={{marginTop: '-12px'}}
+                style={{color: '#FFFFFF', fontWeight: 500}}
                 value={locale.value}
                 onChange={event => (locale.value = event.target.value)}
               >
-                <option style={{color: '#4A5065'}} value="en">ENGLISH</option>
-                <option style={{color: '#4A5065'}} value="ja">日本語</option>
+                <option style={{color: '#FFFFFF'}} value="en">ENG</option>
+                <option style={{color: '#FFFFFF'}} value="ja">日本語</option>
                 {/* <option style={{color: '#4A5065'}} value="ko">한국어</option>
                 <option style={{color: '#4A5065'}} value="zh-Hans">简体中文</option>
                 <option style={{color: '#4A5065'}} value="zh-Hant">繁體中文</option>
@@ -370,34 +376,26 @@ class App extends Component {
               <Content>
                 <NavFixed onClick={scroll}>
                   <Link to="/">
-                    <Logo src="./assets/logo.png" alt="Yoroi is a Web Light Wallet for Cardano Secure Fast Simple" />
+                    <Logo src="./assets/designAssets/Assets/svg/EMURGOTEST-logo.svg" alt="Yoroi is a Web Light Wallet for Cardano Secure Fast Simple" />
                   </Link>
                 </NavFixed>
-                <div style={{ flex: 0.3, marginRight: '45px' }} />
-                <NavFixed style={{ flex: 0.5 }} onClick={scroll}>
-                  <NavLink to="/" exact>{formatMessage({ id: 'header.home' })}</NavLink>
-                </NavFixed>
+                <div style={{ flex: 2, marginRight: '45px' }} />
                 <NavFixed style={{ flex: 0.5 }} onClick={scroll}>
                   <NavLink to="/about">{formatMessage({ id: 'header.about' })}</NavLink>
                 </NavFixed>
                 <NavFixed style={{ flex: 0.5 }} onClick={scroll}>
-                  <NavLink to="/faq/1">{formatMessage({ id: 'header.faq' })}</NavLink>
+                  <NavLink to="/faq/1">{formatMessage({ id: 'header.blog' })}</NavLink>
                 </NavFixed>
                 <NavFixed style={{ flex: 0.5 }} onClick={scroll}>
-                  <NavLink to="/support">{formatMessage({ id: 'header.support' })}</NavLink>
+                  <NavLink to="/support">{formatMessage({ id: 'header.contact' })}</NavLink>
                 </NavFixed>
-                <div style={{ flex: 0.3 }} />
-                <NavFixed  style={{zIndex: '15', visibility: `${downloadVisibility}` }} >
-                  <Download />
-                </NavFixed>
-                <div style={{ flex: 0.1 }} />
-                <NavFixed style={{marginRight: '35px', marginTop: '-5px'}}>
+                <NavFixed style={{marginTop: '10px'}}>
                   <Selector 
-                    style={{marginRight: '7px'}}
+                    style={{marginRight: '7px', color: '#ffffff', fontWeight: 500}}
                     value={locale.value}
                     onChange={event => (locale.value = event.target.value)}
                   >
-                    <option style={{color: '#4A5065'}} value="en">ENGLISH</option>
+                    <option style={{color: '#4A5065'}} value="en">ENG</option>
                     <option style={{color: '#4A5065'}} value="ja">日本語</option>
                     {/* <option style={{color: '#4A5065'}} value="ko">한국어</option>
                     <option style={{color: '#4A5065'}} value="zh-Hans">简体中文</option>

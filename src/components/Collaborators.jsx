@@ -18,26 +18,28 @@ class Collaborators extends Component {
               alignItems: 'center',
               justifyContent: 'center',
               paddingBottom: '23px',
+              height: '52px',
+              width: '969px',
             }}
           >
             <div style={{ margin: '16px' }}>
               <a target="_blank" href="https://emurgo.io/">
-                <img onMouseEnter={e => (e.currentTarget.src = './assets/emurgo-hover.svg')} onMouseLeave={e => (e.currentTarget.src = './assets/emurgo-default.svg')} style={{ height: '50px' }} src="./assets/emurgo-default.svg" alt="Emurgo - Creating a more connected and equitable world through Cardano blockchain" />
+                <img onMouseEnter={e => (e.currentTarget.src = './assets/emurgo-hover.svg')} onMouseLeave={e => (e.currentTarget.src = './assets/emurgo-default.svg')} style={{ height: '50px', width: '200px' }} src="./assets/emurgo-default.svg" alt="Emurgo - Creating a more connected and equitable world through Cardano blockchain" />
               </a>
             </div>
             <div style={{ margin: '16px' }}>
               <a target="_blank" href="https://iohk.io/">
-                <img onMouseEnter={e => (e.currentTarget.src = './assets/input-output-hover.svg')} onMouseLeave={e => (e.currentTarget.src = './assets/input-output-default.svg')}style={{ height: '50px' }} src="./assets/input-output-default.svg" alt="iohk" />
+                <img onMouseEnter={e => (e.currentTarget.src = './assets/input-output-hover.svg')} onMouseLeave={e => (e.currentTarget.src = './assets/input-output-default.svg')}style={{ height: '50px', width: '200px' }} src="./assets/input-output-default.svg" alt="iohk" />
               </a>
             </div>
             <div style={{margin:'16px'}}>
               <a target="_blank" href= "https://vacuumlabs.com/">
-              <img onMouseEnter={e => (e.currentTarget.src = './assets/vacuumlabs-hover.svg')} onMouseLeave={e => (e.currentTarget.src = './assets/vacuumlabs-default.svg')} style={{ height: '50px' }} src="./assets/vacuumlabs-default.svg" alt="Vacuumlabs" />
+              <img onMouseEnter={e => (e.currentTarget.src = './assets/vacuumlabs-hover.svg')} onMouseLeave={e => (e.currentTarget.src = './assets/vacuumlabs-default.svg')} style={{ height: '50px', width: '200px' }} src="./assets/vacuumlabs-default.svg" alt="Vacuumlabs" />
               </a>
             </div>
             <div style={{margin:'16px'}}>
               <a target="_blank" href= "https://www.cardano.org/en/home/">
-              <img onMouseEnter={e => (e.currentTarget.src = './assets/cardano-hover.svg')} onMouseLeave={e => (e.currentTarget.src = './assets/cardano-default.svg')} style={{ height: '50px' }} src="./assets/cardano-default.svg" alt="Cardano" />
+              <img onMouseEnter={e => (e.currentTarget.src = './assets/cardano-hover.svg')} onMouseLeave={e => (e.currentTarget.src = './assets/cardano-default.svg')} style={{ height: '50px', width: '200px' }} src="./assets/cardano-default.svg" alt="Cardano" />
               </a>
             </div>
           </div>

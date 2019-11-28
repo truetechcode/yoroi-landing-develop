@@ -7,25 +7,25 @@ import { Container } from './../css';
 import OutsideClickHandler from 'react-outside-click-handler';
 
 const ContainerFooter = styled.div`
-  color: white;
-  background: linear-gradient(41deg, #1A44B7 0%, #4760FF 100%);
-  height: 187px;
+  height: 187px;	
+  width: 1400px;  
+  background: linear-gradient(41deg, #0C4146 0%, #48A1B0 100%);
 `;
 
 const RowContainerIcons = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row-reverse;
   
   .links {
     flex: 0;
-    margin-left: 20px;  
+    margin: 0 5px;
   }
   .links.links-flex {
     flex: 0;
   }
 `;
 const FooterText = styled.div`
+  width: 100%;
   font-size: 13px;
   text-align: left; 
   display: flex; 
@@ -43,10 +43,12 @@ const Spacer = styled.div`
 
 const RowContainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px; 
+  /* align-items: center; */
+  /* justify-content: space-between; */
+  height: 100px;
+  flex-direction: column;
   @media (max-width: 700px) {
+    min-height: 50px;
     flex-direction: column;
   }
   @media (min-width: 700px) {
@@ -61,98 +63,6 @@ const RowContainer = styled.div`
   }
 `;
 
-const DropdownButton = styled.div`
-  cursor: pointer;
-  flex: 1;
-  height: 49px;	
-  width: 190px;	
-  min-width: 160px;
-  border-radius: 8px;	
-  background-color: #17D1AA;	
-  margin-bottom:5px;
-  box-shadow: 0 2px 48px 0 rgba(83,81,81,0.5);
-  color: #ffffff;
-  display: block;
-  overflow:hidden;
-  
-  .ArrowUp {
-    margin-left: 158px;
-    margin-top: -31px;
-    transform: rotate(180deg);
-  }
- `;
-
-const DownloadButtonText = styled.div`
-  margin-left: 15px; 
-  font-size: 15px;
-  font-weight: 500; 
-  margin-top: 5px;
-  text-transform: uppercase;
-`;
-
-const DropdownContent = styled.div`
-  position: absolute;
-  background-color: #17d1aa;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  border-radius: 8px;	
-  z-index: 3;
-  top: auto;
-  bottom: 100%;
-  margin-bottom: 5px;
-  overflow: auto;
-  text-transform:initial;
-  text-align: justify;
-  width: 190px;
-
-  a {
-    background-color: #17d1aa;
-    padding: 5px 5px;
-    display: block;
-    font-size: 14px;
-    
-  }
-  a:hover {
-    background-color: #14E2B8
-  }
-  .icon {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-    margin-right: 5px;
-  }
-  .icon.icon-shrink {
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-    margin-right: 10px;
-    margin-left: 5px;
-  }
-`;
-
-const Download = styled.div`
-  position: relative;
-  display: inline-block;
-  color: #FFFFFF;	
-  font-family: Rubik;	
-  font-size: 15px;	
-  font-weight: initial;	
-  line-height: 40px; 
-  flex: 0.8;
-
-  margin-top: 60px;
-  :hover ${DropdownButton} {
-    background-color: #14E2B8;
-    align-items:left;
-  }
-`;
-
-const DownloadItemImage = styled.img`
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
-  margin-right: 5px;
-`;
-
 const LogoSize = styled.div`
   flex: 2;
   margin-top: -30px;
@@ -161,9 +71,20 @@ const LogoSize = styled.div`
 const Logo = styled.img`
   font-size: 1.5em;
   text-align: center;
-  max-width: 128px;
+  /* max-width: 128px; */
+  height: 35px;	
+  max-width: 188.19px;
   margin-right: -110px;
   margin-left: -30px;
+`;
+
+const FooterMenu = styled.div`
+  display: flex;
+  padding: 60px 0;
+  flex-direction: row;
+  div{
+    display: flex;
+  }
 `;
 
 const LinkS = styled.div`
@@ -223,97 +144,27 @@ class App extends Component {
       <ContainerFooter >
         <ContainerHeight>
           <RowContainer>
+            <FooterMenu>
             <LogoSize>
-              <Logo src="./assets/logo.png" alt="Yoroi is a Web Light Wallet for Cardano Secure Fast Simple" />
+            <Logo src="./assets/designAssets/Assets/svg/EMURGOTEST-logo.svg" alt="Yoroi is a Web Light Wallet for Cardano Secure Fast Simple" />
             </LogoSize>
-            <LinkS onClick={scroll}>
-              <Link to="/">{formatMessage({ id: 'header.home' })}</Link>
-            </LinkS>
+            <div>
             <LinkS onClick={scroll}>
               <Link to="/about">{formatMessage({ id: 'header.about' })}</Link>
             </LinkS>
             <LinkS onClick={scroll} style={{flex: 0.5}}>
-              <Link to="/faq/1">{formatMessage({ id: 'header.faq' })}</Link>
+              <Link to="/faq/1">{formatMessage({ id: 'header.blog' })}</Link>
             </LinkS>
             <LinkS onClick={scroll}>
-              <Link to="/support">{formatMessage({ id: 'header.support' })}</Link>
+              <Link to="/support">{formatMessage({ id: 'header.contact' })}</Link>
             </LinkS>
-            <LinkS onClick={scroll} style={{ flex: 1.7 }}>
-              <Link to="/terms_and_conditions">{formatMessage({ id: 'footer.terms-and-condtions' })}</Link>
-            </LinkS>
+            </div>
+            </FooterMenu>
             <div style={{ flex: 0.1 }} />
-            <LinkS style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
-              <Download>
-                <DropdownButton onClick={this.showDropdownMenu}>
-                  <DownloadButtonText>{formatMessage({id: 'header.download'})}</DownloadButtonText>
-                  <img
-                    className ='ArrowUp'
-                    src="./assets/arrow-down.svg"
-                  />
-                </DropdownButton>
-                { this.state.showDownloadDropdown &&
-                  <OutsideClickHandler onOutsideClick={this.hideDropdownMenu}>
-                  <DropdownContent>
-                    <a
-                      rel="noopener"
-                      target= '_blank'
-                      href= "https://chrome.google.com/webstore/detail/yoroi/ffnbelfdoeiohenkjibnmadjiehjhajb"
-                    >
-                      <DownloadItemImage
-                        style={{  width: '16px', height: '16px', marginLeft: '5px', marginRight: '10px' }}
-                        src="./assets/chrome.svg"
-                      />
-                      {formatMessage({id: 'download.mainnet.chrome'})}
-                    </a>
-                    <a
-                      rel="noopener"
-                      target= '_blank'
-                      href= "https://chrome.google.com/webstore/detail/yoroi-shelley-testnet/bioklcnnnpdblghplkifbemcigeanmjn"
-                    >
-                      <DownloadItemImage
-                        style={{  width: '16px', height: '16px', marginLeft: '5px',  marginRight: '10px' }}
-                        src="./assets/chrome.svg"
-                      />
-                      {formatMessage({id: 'download.testnet.chrome'})}
-                    </a>                        
-                    <a
-                      rel="noopener"
-                      target= '_blank'
-                      href="https://addons.mozilla.org/en-US/firefox/addon/yoroi/"
-                    >
-                      <DownloadItemImage src="./assets/firefox.svg" />
-                      {formatMessage({id: 'download.mainnet.firefox'})}
-                    </a>
-                    <a
-                      rel="noopener"
-                      target= '_blank'
-                      href="https://addons.mozilla.org/en-US/firefox/addon/yoroi-shelley-testnet/"
-                    >
-                      <DownloadItemImage src="./assets/firefox.svg" />
-                      {formatMessage({id: 'download.testnet.firefox'})}
-                    </a>                        
-                    <a
-                      rel="noopener"
-                      target= '_blank'
-                      href="https://play.google.com/store/apps/details?id=com.emurgo&hl=en"
-                    >
-                      <DownloadItemImage src="./assets/google-play.svg" />
-                      {formatMessage({id: 'download.mainnet.android'})}
-                    </a>
-                    <a
-                      rel="noopener"
-                      target= '_blank'
-                      href="https://apps.apple.com/us/app/emurgos-yoroi-cardano-wallet/id1447326389"
-                    >
-                      <DownloadItemImage src="./assets/apple.svg" />
-                      {formatMessage({id: 'download.mainnet.ios'})}
-                    </a>
-                  </DropdownContent>
-                  </OutsideClickHandler>
-                }
-              </Download>
               <Spacer />
               <RowContainerIcons style={{ paddingTop: '29.74px', }}>
+              <LinkS style={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'flex-end'}}>
+
                 <a className='links links-flex' target= '_blank' href="https://www.facebook.com/Yoroi-wallet-399386000586822/" rel='noopener'>
                   <img src="./assets/facebook.svg" />
                 </a>
@@ -332,15 +183,15 @@ class App extends Component {
                 <a className='links' target= '_blank' href="https://www.linkedin.com/company/emurgo_io"  rel='noopener'>
                   <img src="./assets/linkedin.svg" />
                 </a>
-              </RowContainerIcons>
-            </LinkS>
-          </RowContainer>
-          <RowContainerIcons style={{paddingTop: '-29.74px' }}>
+                </LinkS>
+              {/* </RowContainerIcons>
+          <RowContainerIcons style={{paddingTop: '-29.74px' }}> */}
             <FooterText>
               {formatMessage({ id: 'footer.all-rights' })}
             </FooterText>
-            <Spacer/>
+            {/* <Spacer/> */}
           </RowContainerIcons>
+          </RowContainer>
         </ContainerHeight>
       </ContainerFooter>
     );

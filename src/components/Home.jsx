@@ -11,6 +11,8 @@ import { Container, ContainerGrey, Overflow, SectionTitle } from './../css';
 import Roadmap from './Roadmap';
 import Technologies from './Technologies';
 import Collaborators from './Collaborators';
+import Blog from "./Blog";
+import Contact from "./Contact";
 
 const MainTitle = styled.div`
   color: #FFFFFF;	
@@ -48,14 +50,14 @@ const MainImage = styled.div`
   @media (max-width: 700px) {
     display: none;
   }
-  flex: 1;
+  /* flex: 1;
   height: 783px;
   width: 1003px;
   background-image: url('./assets/picture_simple.svg');
   background-repeat: no-repeat;
   background-size: contain;
   margin-top: -280px;
-  margin-left: 242px;
+  margin-left: 242px; */
 `;
 
 const Right = styled.div`
@@ -73,7 +75,7 @@ const Right = styled.div`
 
 const Left = styled.div`
   @media (min-width: 700px) {
-    margin: 130px 50% 0 0;
+    margin: 50px 50% 0 0;
   }
   @media (max-width: 700px) {
     margin: 0 8px 0 8px;
@@ -145,27 +147,38 @@ const MainButtons = styled.div`
   }
 `;
 
-const DownloadB = styled.div`
+const LearnButton = styled.div`
   @media (min-width: 700px) {
     flex: 1;
   }
   @media (max-width: 700px) {
     width: 210px;
   }
+  box-sizing: border-box;
+  height: 48px;
+  width: 216px;
+  border: 2px solid #FFFFFF;
+  border-radius: 2px;
+  box-shadow: 0 2px 48px 0 rgba(83,81,81,0.5);
+
+  text-transform: uppercase;
   align-items: center;
   justify-content: center;
-  height: 50px;
+  /* height: 46px; */
   margin-right: 10px;
-  border-radius: 4px;
-  width: 200px;
-  box-shadow: 0 2px 48px 0 #184dcf;
+  /* border-radius: 8px; */
+  /* width: 190px; */
+  /* box-shadow: 0 2px 48px 0 #184dcf; */
   padding-left: 8px;
   padding-right: 8px;
-  background: #17d1aa;
+
+  /* border: solid 2px white; */
+  /* background: #ffffff00; */
   color: #ffffff;
   cursor: pointer;
-  display: flow;
-  flow-orientation: row;
+  display: flex;
+  flex-direction: row;
+
   
   transition: all .2s;
   &:hover {
@@ -174,21 +187,17 @@ const DownloadB = styled.div`
   }
 `;
 
-const DownloadBChrome = styled.img`
-  width: 26px;
-  height: 26px;
-  margin-right: 10px;
-`;
-
-const DownloadBChromeTextA = styled.div`
+const LearnButtonText = styled.div`
   text-transform: uppercase;
-  font-size: 15px;
-`;
-
-const DownloadBChromeTextB = styled.div`
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 300;
+  height: 17px;	
+  width: 108px;	
+  color: #FFFFFF;	
+  font-family: Rubik;	
+  font-size: 14px;	
+  font-weight: 500;	
+  letter-spacing: 1.87px;	
+  line-height: 17px;	
+  text-align: center;  
 `;
 
 const WatchVideo = styled.div`
@@ -199,20 +208,27 @@ const WatchVideo = styled.div`
     width: 190x;
     margin-top: 16px;
   }
+  box-sizing: border-box;
+  height: 48px;
+  width: 216px;
+  border: 2px solid #FFFFFF;
+  border-radius: 2px;
+  box-shadow: 0 2px 48px 0 rgba(83,81,81,0.5);
+
 
   text-transform: uppercase;
   align-items: center;
   justify-content: center;
-  height: 46px;
+  /* height: 46px; */
   margin-right: 10px;
-  border-radius: 8px;
-  width: 190px;
-  box-shadow: 0 2px 48px 0 #184dcf;
+  /* border-radius: 8px; */
+  /* width: 190px; */
+  /* box-shadow: 0 2px 48px 0 #184dcf; */
   padding-left: 8px;
   padding-right: 8px;
 
-  border: solid 2px white;
-  background: #ffffff00;
+  /* border: solid 2px white; */
+  /* background: #ffffff00; */
   color: #ffffff;
   cursor: pointer;
   display: flex;
@@ -226,8 +242,8 @@ const WatchVideo = styled.div`
 `;
 
 const WatchVideoImage = styled.span`
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   display: flex;
   margin-right: 10px;
   background: url('./assets/playbtn.svg') center no-repeat;
@@ -262,6 +278,36 @@ const EmurgoLogo = styled.img`
 const ContainerBottom = styled(Container)`
   padding-bottom: 60px;
   max-height: 2400px;
+`;
+
+const About = styled(Container)`
+  margin: 200px auto;
+`;
+
+const AboutTitle = styled.div`
+  color: #215F68;	
+  font-family: Rubik;	
+  font-size: 24px;	
+  font-weight: bold;	
+  line-height: 32px;	
+  text-align: center;
+`;
+
+const Developer = styled.img`
+  height: 600px;	
+  width: 1400px;
+`;
+
+const DeveloperOverlay = styled.div`
+  height: 600px;	
+  width: 1400px;	
+  background: linear-gradient(47.75deg, #0C4146 0%, #48A1B0 100%);
+`;
+
+const DeveloperMask = styled.div`
+  height: 600px;	
+  width: 1400px;	
+  background-color: #215F68;
 `;
 
 const DropdownButton = styled.div`
@@ -394,75 +440,12 @@ class App extends Component {
                 By <EmurgoLogo src="./assets/emurgo_logo.png" alt="Emurgo - Creating a more connected and equitable world through Cardano blockchain" border="0" />
               </SubSubTitle>
               <MainButtons>
-                <Download style={{marginRight: '20px'}}>
-                  <DropdownButton onClick={this.showDropdownMenu}>
-                    <DownloadLabel>{formatMessage({id: 'header.download'})}</DownloadLabel>
-                    <img
-                      style= {{marginLeft:'158px', marginTop: '-31px'}}
-                      src="./assets/arrow down.svg"
-                    />
-                  </DropdownButton>
-                  { this.state.showDownloadDropdown &&
-                    <OutsideClickHandler onOutsideClick={this.hideDropdownMenu}>
-                      <DropdownContent>
-                        <a
-                          rel="noopener"
-                          target= '_blank'
-                          href= "https://chrome.google.com/webstore/detail/yoroi/ffnbelfdoeiohenkjibnmadjiehjhajb"
-                        >
-                          <DownloadItemImage
-                            style={{  width: '16px', height: '16px', marginLeft: '5px', marginRight: '10px' }}
-                            src="./assets/chrome.svg"
-                          />
-                          {formatMessage({id: 'download.mainnet.chrome'})}
-                        </a>
-                        <a
-                          rel="noopener"
-                          target= '_blank'
-                          href= "https://chrome.google.com/webstore/detail/yoroi-shelley-testnet/bioklcnnnpdblghplkifbemcigeanmjn"
-                        >
-                          <DownloadItemImage
-                            style={{  width: '16px', height: '16px', marginLeft: '5px', marginRight: '10px' }}
-                            src="./assets/chrome.svg"
-                          />
-                          {formatMessage({id: 'download.testnet.chrome'})}
-                        </a>                        
-                        <a
-                          rel="noopener"
-                          target= '_blank'
-                          href="https://addons.mozilla.org/en-US/firefox/addon/yoroi/"
-                        >
-                          <DownloadItemImage src="./assets/firefox.svg" />
-                          {formatMessage({id: 'download.mainnet.firefox'})}
-                        </a>
-                        <a
-                          rel="noopener"
-                          target= '_blank'
-                          href="https://addons.mozilla.org/en-US/firefox/addon/yoroi-shelley-testnet/"
-                        >
-                          <DownloadItemImage src="./assets/firefox.svg" />
-                          {formatMessage({id: 'download.testnet.firefox'})}
-                        </a>                        
-                        <a
-                          rel="noopener"
-                          target= '_blank'
-                          href="https://play.google.com/store/apps/details?id=com.emurgo&hl=en"
-                        >
-                          <DownloadItemImage src="./assets/google-play.svg" />
-                          {formatMessage({id: 'download.mainnet.android'})}
-                        </a>
-                        <a
-                          rel="noopener"
-                          target= '_blank'
-                          href="https://apps.apple.com/us/app/emurgos-yoroi-cardano-wallet/id1447326389"
-                        >
-                          <DownloadItemImage src="./assets/apple.svg" />
-                          {formatMessage({id: 'download.mainnet.ios'})}
-                        </a>
-                      </DropdownContent>
-                    </OutsideClickHandler>
-                  }
-                </Download>
+                <LearnButton onClick={this.openVideo} style={{marginTop: '-7px'}}>
+                  <div style={{ width: 'auto'}}>
+                    <LearnButtonText> {formatMessage({ id: 'home.title.learn-more' })} </LearnButtonText>
+                  </div>
+                </LearnButton>
+
                 <WatchVideo onClick={this.openVideo} style={{marginTop: '-7px'}}>
                   <span>
                     <WatchVideoImage />
@@ -475,7 +458,12 @@ class App extends Component {
             </MainText>
           </Overflow>
           <MainImage/>
-          <Left>
+        </ContainerBottom>
+        <About>
+            <AboutTitle>
+              <h2>{formatMessage({ id: 'home.about.title' })}</h2>
+            </AboutTitle>
+            <Left>
             <SquareText style={{marginLeft: '502px'}}>
               <SquareTextTitle >{formatMessage({ id: 'home.properties.secure' })}</SquareTextTitle>
               <SquareTextText >
@@ -511,10 +499,15 @@ class App extends Component {
               <SquareImage src="./assets/icon_simple.svg" alt="Yoroi - Simple Our passion" />
             </square>
           </Left>
-        </ContainerBottom>
+          </About>
+          <DeveloperMask>
+            <DeveloperOverlay>
+              <Developer src="./assets/designAssets/Assets/photos/Developer.jpg" alt="Yoroi - Simple Our passion" />
+            </DeveloperOverlay>
+          </DeveloperMask>
         <Collaborators />
-        <Roadmap />
-        <Technologies />
+        <Blog />
+        <Contact />
       </span>
     );
 
