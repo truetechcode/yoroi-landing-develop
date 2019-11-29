@@ -1,199 +1,160 @@
-import React, { Component } from 'react';
+import React from 'react'
 import { injectIntl } from 'react-intl';
 import { inject, observer } from 'mobx-react/index';
-import ModalVideo from 'react-modal-video';
-import { FormattedHTMLMessage } from 'react-intl';
 import styled from 'styled-components';
+import { Container, ContainerGrey, Overflow, SectionTitle } from './../css';
 
-import { Container, ContainerB, ContainerBlue, OverflowS } from './../css';
-import TitleIconBlock from './TitleIconBlock';
-import aboutIconSVG from '../assets/about.svg';
 
-const TitleTextBlock = styled.div`
-  padding-top: 20px;
-  margin-left: 45.45%;
-  font-size: 30px;
-  color: #244BC0;
-  font-weight: bold;
-  width: fit-content;
+const About = styled(Container)`
+  margin: 200px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+`;
+
+const AboutTitle = styled.div`
+  color: #215F68;	
+  font-family: Rubik;	
+  font-size: 24px;	
+  font-weight: bold;	
+  line-height: 32px;	
   text-align: center;
 `;
 
-const SectionAboutYoroi = styled(Container)`
+const Right = styled.div`
+  @media (min-width: 700px) {
+    margin: 100px auto;
+    height: 282px;	
+    width: 770px;
+  }
+  @media (max-width: 700px) {
+    height: auto;	
+    width: auto;    
+  }
   display: flex;
   flex-direction: row;
-  padding-top: 73px;  
   align-items: center;
-  justify-content: center;
-  padding-bottom: 143px;
+  justify-content: space-between;
 `;
 
-const AboutYoroiTextBlock = styled.div`
+const Left = styled.div`
+  @media (min-width: 700px) {
+    margin: 0 auto;
+    height: 282px;	
+    width: 770px;     
+  }
+
+  @media (max-width: 700px) {
+    height: auto;	
+    width: auto;
+  }
+
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const Square = styled.div`
+  width: 320px;
+  height: 300px;
+`;
+
+const SquareImage = styled.img`
+  @media (max-width: 700px) {
+    width: 80%;
+  }
+
+  height: 330px;
+  width: 350px;
+`;
+
+const SquareText = styled.div`
+  @media (max-width: 700px) {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 168px;
+    width: 70%;
+
+  }
+
   flex: 1;
-  justify-content: center;
-  max-width: 700px;
-`;
 
-const AboutYoroiText = styled.div`
-  padding-bottom: 30px;
-  height: 38px;
-  width: 400px;
-  color: #353535;
-  font-size: 32px;
-`;
-
-const AboutYoroiDescText = styled.div`
-  color: #9B9B9B;
   font-size: 14px;
-  width: 495px;
+  color: #9B9B9B;
   line-height: 28px;
+  height: 168px;
+  width: 400px;
 `;
 
-const YoroiImage = styled.img`
-  height: 670px;
-  width: 670px;
-  z-index: -1;
-  margin-left: -40px;
+const SquareTextTitle = styled.div`
+  height: 36px;	
+  width: 98px;	
+  color: #353535;	
+  font-family: Rubik;	
+  font-size: 30px;	
+  line-height: 36px;
+  margin-bottom: 20px;
 `;
 
-const SectionAboutEmurgo = styled(Container)`
-  display: flex;
-  
-  @media (min-width: 700px) {
-    flex-direction: row
-  }
-  @media (max-width: 960px) {
-    flex-direction: column;
-    justify-content: center;
-  }
+const SquareTextText = styled.div`
+  font-size: 14px;
+  color: #9B9B9B;
+  line-height: 28px;
+  height: 168px;
+  width: 400px;
 `;
 
-const AboutEmurgoTextBlock = styled(Container)`
-  justify-content: center;
-  flex-direction: column; 
-  display: flex;
- 
-  background-color: #F0F3F5;
-  padding-left: 50px;
-  padding-right: 474px;
-  width: 960px;
 
-  @media (min-width: 700px) {
-    flex: 1,
-  }
-  @media (max-width: 1000px) {
-  }
-`;
+function AboutComponent() {
+  const _About = ({ intl: { formatMessage } }) => (
+    <span>
+           <About id="about">
+            <AboutTitle>
+              <h2>{formatMessage({ id: 'home.about.title' })}</h2>
+            </AboutTitle>
+            <Left>
+            <SquareText style={{}}>
+              <SquareTextTitle >{formatMessage({ id: 'home.properties.secure' })}</SquareTextTitle>
+              <SquareTextText >
+              <span style={{ color: '#353535', fontWeight: '400' }}>{formatMessage({ id: 'home.properties.secure-text-highlight' })}</span><br/>
+                {formatMessage({ id: 'home.properties.secure-text' })}
+              </SquareTextText>
+            </SquareText>
+            <Square style={{}}>
+              <SquareImage src="./assets/icon_secure.svg" alt="Yoroi is a Web Light Wallet for Cardano Secure Fast Simple" />
+            </Square>
+          </Left>
+          <Right>
+            <Square>
+              <SquareImage src="./assets/icon_fast.svg" alt="Yoroi - Fast Our innovation" />
+            </Square>
+            <SquareText style={{marginLeft: '50px'}}>
+              <SquareTextTitle >{formatMessage({ id: 'home.properties.fast' })}</SquareTextTitle>
+              <SquareTextText>
+              <span style={{ color: '#353535', fontWeight: '400' }}>{formatMessage({ id: 'home.properties.fast-text-highlight' })}</span><br/>
+                {formatMessage({ id: 'home.properties.fast-text' })}
+              </SquareTextText>
+            </SquareText>
+          </Right>
+          <Left>
+            <SquareText style={{}}>
+              <SquareTextTitle>{formatMessage({ id: 'home.properties.simple' })}</SquareTextTitle>
+              <SquareTextText>
+              <span style={{ color: '#353535', fontWeight: '400' }}>{formatMessage({ id: 'home.properties.simple-text-highlight' })}</span><br/>
+                {formatMessage({ id: 'home.properties.simple-text' })}
+              </SquareTextText>
+            </SquareText>
+            <Square style={{}}>
+              <SquareImage src="./assets/icon_simple.svg" alt="Yoroi - Simple Our passion" />
+            </Square>
+          </Left>
+          </About>
+    </span>
+  );
+  const AboutComponent = inject('locale')(injectIntl(observer(_About)));
 
-const VideoTitle = styled.div`
-  color: white;
-  font-size: 30px;
-  padding-bottom: 40px;
-`;
-
-const EmurgoLink = styled.div`
-  a {
-    height: 24px;
-    text-decoration: none;
-    color: #3154CB;	
-    font-size: 14px;
-   
-    img {
-      height: 13px;
-      width: 13px;
-      padding-left: 5px;
-      margin-bottom: -2px;
-    }  
-  }
-`;
-
-class Video extends ModalVideo {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: this.props.isOpen,
-    };
-  }
+  return <AboutComponent />
 }
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      video: false,
-    };
-    this.openVideo = this.openVideo.bind(this);
-  }
-
-  openVideo() {
-    this.setState({ video: true });
-  }
-
-  render() {
-    const _About = ({ intl: { formatMessage } }) => (
-      <span>
-        <Video
-          isOpen={this.state.video}
-          channel="youtube"
-          videoId="_ltQayKP5ek"
-          onClose={() => this.setState({ video: false })}
-        />        
-        <Container>
-          <TitleIconBlock icon={aboutIconSVG} />
-          <TitleTextBlock >{formatMessage({ id: 'header.about' })}</TitleTextBlock>
-        </Container>
-        <SectionAboutYoroi>
-          <AboutYoroiTextBlock>
-            <AboutYoroiText>{formatMessage({ id: 'about.why-yoroi-title' })}</AboutYoroiText>
-            <AboutYoroiDescText>{formatMessage({ id: 'about.why-yoroi-text' })}</AboutYoroiDescText>
-          </AboutYoroiTextBlock>
-          <YoroiImage src="./assets/about_samurai.png" />
-        </SectionAboutYoroi>
-        <SectionAboutEmurgo>
-          <ContainerB style={{ display: 'flex', flexDirection: 'row', backgroundColor: 'black'}}>
-            <div
-              onClick={this.openVideo}  
-              style={{
-                backgroundImage: "url('./assets/emurgo_video.png')",
-                opacity: '0.4',
-                width: '960px',
-                height: '600px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                cursor: 'pointer',
-              }}
-            >
-              <img src="./assets/playbtn.svg" style={{ width: '80px'}} />
-            </div>
-          </ContainerB>
-          <AboutEmurgoTextBlock>
-              <div style={{ color: '#353535', fontSize: '32px', paddingBottom: '30px', lineHeight: '38px' }}>{formatMessage({ id: 'about.the-meaning-title' })}</div>
-              <div style={{color: '#353535', fontSize: '14px', lineHeight: '28px', height: '28px'}}>{formatMessage({id: "EMURGO Building a Global Cardano"})}</div>
-              <div style={{ color: '#9B9B9B', fontSize: '14px', width: '486px', height: '86px', lineHeight: '28px', paddingBottom: '30px' }}>
-                {formatMessage ({id: 'about.the-meaning-p1'})}
-              </div>
-              <br />
-              <EmurgoLink>
-                <a
-                  target="_blank"
-                  rel="noopener"
-                  href="https://emurgo.io/"
-                >
-                  {formatMessage({ id: 'about.visit-the-website'})}
-                  <img src='./assets/arrow-link.svg'/>
-                </a>
-              </EmurgoLink>
-          </AboutEmurgoTextBlock>
-        </SectionAboutEmurgo>
-      </span>
-    );
-
-    const About = inject('locale')(injectIntl(observer(_About)));
-    return <About />;
-  }
-}
-
-export default App;
+export default AboutComponent

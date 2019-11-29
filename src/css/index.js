@@ -42,7 +42,10 @@ const ContainerB = styled.div`
 `;
 
 const ContainerGrey = styled.div`
-  /* background-color: #f4f4f7; */
+  @media (max-width: 700px) {
+    width: 100%;
+    height: auto;
+  }
   height: 240px;	
   width: 1400px;	
   background-color: #F1F7FA;

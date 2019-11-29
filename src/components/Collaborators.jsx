@@ -18,8 +18,9 @@ class Collaborators extends Component {
               alignItems: 'center',
               justifyContent: 'center',
               paddingBottom: '23px',
-              height: '52px',
-              width: '969px',
+              height: 'auto',
+              width: '100%',
+              flexFlow: 'wrap',
             }}
           >
             <div style={{ margin: '16px' }}>

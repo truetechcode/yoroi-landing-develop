@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import { inject, observer } from 'mobx-react/index';
-import ModalVideo from 'react-modal-video';
-import SweetAlert from 'react-bootstrap-sweetalert';
 import { FormattedHTMLMessage } from 'react-intl';
-import OutsideClickHandler from 'react-outside-click-handler';
 import styled from 'styled-components';
 
 import { Container, ContainerGrey, Overflow, SectionTitle } from './../css';
-import Roadmap from './Roadmap';
-import Technologies from './Technologies';
 import Collaborators from './Collaborators';
 import Blog from "./Blog";
 import Contact from "./Contact";
+import AboutComponent from "./About";
 
 const MainTitle = styled.div`
+  @media (max-width: 700px) {
+    font-size: 40px;	
+    font-weight: bold;	
+    line-height: 60px;
+    letter-spacing: 1px;
+    margin-left: 50px;
+  }
+
   color: #FFFFFF;	
   font-family: Rubik;	
   font-size: 62px;	
@@ -24,6 +28,13 @@ const MainTitle = styled.div`
 `;
 
 const SubTitle = styled.div`
+  @media (max-width: 700px) {
+    font-size: 10px;	
+    line-height: 20px;
+    letter-spacing: 1px;
+    margin-left: 50px;
+  }
+
   height: 24px;	
   color: #FFFFFF;	
   font-family: Rubik;	
@@ -34,6 +45,13 @@ const SubTitle = styled.div`
 `;
 
 const SubSubTitle = styled.div`
+  @media (max-width: 700px) {
+    font-size: 10px;	
+    line-height: 20px;
+    letter-spacing: 1px;
+    margin-left: 50px;
+  }
+
   font-size: 20px;
   color: white;
   font-weight: 300;
@@ -50,72 +68,6 @@ const MainImage = styled.div`
   @media (max-width: 700px) {
     display: none;
   }
-  /* flex: 1;
-  height: 783px;
-  width: 1003px;
-  background-image: url('./assets/picture_simple.svg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  margin-top: -280px;
-  margin-left: 242px; */
-`;
-
-const Right = styled.div`
-  @media (min-width: 700px) {
-    margin: 130px 0 0 8%;
-  }
-  @media (max-width: 700px) {
-    margin: 0 8px 0 8px;
-    min-height: 280px;
-  }
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Left = styled.div`
-  @media (min-width: 700px) {
-    margin: 50px 50% 0 0;
-  }
-  @media (max-width: 700px) {
-    margin: 0 8px 0 8px;
-    min-height: 320px;
-  }
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Square = styled.div`
-  width: 320px;
-  height: 300px;
-`;
-
-const SquareImage = styled.img`
-  height: 330px;
-  width: 350px;
-`;
-
-const SquareText = styled.div`
-  flex: 1;
-`;
-
-const SquareTextTitle = styled.div`
-  height: 36px;	
-  width: 98px;	
-  color: #353535;	
-  font-family: Rubik;	
-  font-size: 30px;	
-  line-height: 36px;
-  margin-bottom: 20px;
-`;
-
-const SquareTextText = styled.div`
-  font-size: 14px;
-  color: #9B9B9B;
-  line-height: 28px;
-  height: 168px;
-  width: 400px;
 `;
 
 const MainButtons = styled.div`
@@ -130,7 +82,8 @@ const MainButtons = styled.div`
 
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    height: 100px;
   }
 
   align-items: center;
@@ -164,16 +117,10 @@ const LearnButton = styled.div`
   text-transform: uppercase;
   align-items: center;
   justify-content: center;
-  /* height: 46px; */
   margin-right: 10px;
-  /* border-radius: 8px; */
-  /* width: 190px; */
-  /* box-shadow: 0 2px 48px 0 #184dcf; */
   padding-left: 8px;
   padding-right: 8px;
 
-  /* border: solid 2px white; */
-  /* background: #ffffff00; */
   color: #ffffff;
   cursor: pointer;
   display: flex;
@@ -219,16 +166,10 @@ const WatchVideo = styled.div`
   text-transform: uppercase;
   align-items: center;
   justify-content: center;
-  /* height: 46px; */
   margin-right: 10px;
-  /* border-radius: 8px; */
-  /* width: 190px; */
-  /* box-shadow: 0 2px 48px 0 #184dcf; */
   padding-left: 8px;
   padding-right: 8px;
 
-  /* border: solid 2px white; */
-  /* background: #ffffff00; */
   color: #ffffff;
   cursor: pointer;
   display: flex;
@@ -280,124 +221,37 @@ const ContainerBottom = styled(Container)`
   max-height: 2400px;
 `;
 
-const About = styled(Container)`
-  margin: 200px auto;
-`;
-
-const AboutTitle = styled.div`
-  color: #215F68;	
-  font-family: Rubik;	
-  font-size: 24px;	
-  font-weight: bold;	
-  line-height: 32px;	
-  text-align: center;
-`;
-
 const Developer = styled.img`
+  @media (max-width: 700px) {
+    height: auto;	
+    width: 100%;    
+  }
+
   height: 600px;	
   width: 1400px;
 `;
 
 const DeveloperOverlay = styled.div`
+  @media (max-width: 700px) {
+    height: auto;	
+    width: 100%;    
+  }
+
   height: 600px;	
   width: 1400px;	
   background: linear-gradient(47.75deg, #0C4146 0%, #48A1B0 100%);
 `;
 
 const DeveloperMask = styled.div`
+  @media (max-width: 700px) {
+    height: auto;	
+    width: 100%;    
+  }
+
   height: 600px;	
   width: 1400px;	
   background-color: #215F68;
 `;
-
-const DropdownButton = styled.div`
-  cursor: pointer;
-  flex: 1;
-  height: 49px;	
-  width: 190px;	
-  min-width: 160px;
-  border-radius: 8px;	
-  background-color: #17D1AA;	
-  margin-bottom:5px;
-  box-shadow: 0 2px 48px 0 rgba(83,81,81,0.5);
-  color: #ffffff;
-  display: block;
-  overflow:hidden;
-  &:hover{
-    background-color: #14E2B8;
-  }
-`;
-
-const DropdownContent = styled.div`
-  position: absolute;
-  background-color: #17d1aa;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  border-radius: 8px;	
-  z-index: 3;
-  
-  margin-bottom: 5px;
-  overflow: auto;
-  text-transform:initial;
-  text-align: justify;
-  width: 190px;
-
-  a {
-    background-color: #17d1aa;
-    padding: 5px 5px;
-    display: block;
-    font-size: 14px;
-    
-  }
-  a:hover {
-    background-color: #14E2B8
-  }
-`;
-
-const Download = styled.div`
-  position: relative;
-  display: inline-block;
-  color: #FFFFFF;	
-  font-family: Rubik;	
-  font-size: 15px;	
-  font-weight: initial;	
-  line-height: 40px; 
-  flex: 0.8;
-
-  :hover ${DropdownButton} {
-    background-color: #14E2B8;
-    align-items:left;
-  }
-`;
-
-const DownloadItemImage = styled.img`
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
-  margin-right: 5px;
-`;
-
-const DownloadLabel = styled.div`
-  margin-left: 15px;
-  font-size: 15px;
-  font-weight: 500;
-  margin-top: 5px;
-  text-transform: uppercase;
-`;
-
-/**
- *  This Component is to be able to pass isOpen
- *  to ModalVideo. Example did not work as intenteded:
- *  Prop was passed by isOpen={this.state.video} but
- *  not binded to state isOpen.
- */
-class Video extends ModalVideo {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: this.props.isOpen,
-    };
-  }
-}
 
 class App extends Component {
   constructor(props) {
@@ -423,9 +277,8 @@ class App extends Component {
 
   render() {
     const _Home = ({ intl: { formatMessage } }) => (
-      <span>
+      <span id="#top">
         <ContainerBottom>
-          <Video isOpen={this.state.video} channel="youtube" videoId="DHtEgLMslIQ" onClose={() => this.setState({ video: false })} />
           <Overflow style={{marginTop: '94px', marginLeft: '-37px'}}>
             <MainText>
               <MainTitle>
@@ -459,47 +312,7 @@ class App extends Component {
           </Overflow>
           <MainImage/>
         </ContainerBottom>
-        <About>
-            <AboutTitle>
-              <h2>{formatMessage({ id: 'home.about.title' })}</h2>
-            </AboutTitle>
-            <Left>
-            <SquareText style={{marginLeft: '502px'}}>
-              <SquareTextTitle >{formatMessage({ id: 'home.properties.secure' })}</SquareTextTitle>
-              <SquareTextText >
-              <span style={{ color: '#353535', fontWeight: '400' }}>{formatMessage({ id: 'home.properties.secure-text-highlight' })}</span><br/>
-                {formatMessage({ id: 'home.properties.secure-text' })}
-              </SquareTextText>
-            </SquareText>
-            <square style={{marginLeft: '150px'}}>
-              <SquareImage src="./assets/icon_secure.svg" alt="Yoroi is a Web Light Wallet for Cardano Secure Fast Simple" />
-            </square>
-          </Left>
-          <Right>
-            <square>
-              <SquareImage src="./assets/icon_fast.svg" alt="Yoroi - Fast Our innovation" />
-            </square>
-            <SquareText style={{marginLeft: '190px'}}>
-              <SquareTextTitle >{formatMessage({ id: 'home.properties.fast' })}</SquareTextTitle>
-              <SquareTextText>
-              <span style={{ color: '#353535', fontWeight: '400' }}>{formatMessage({ id: 'home.properties.fast-text-highlight' })}</span><br/>
-                {formatMessage({ id: 'home.properties.fast-text' })}
-              </SquareTextText>
-            </SquareText>
-          </Right>
-          <Left>
-            <SquareText style={{marginLeft: '502px'}}>
-              <SquareTextTitle>{formatMessage({ id: 'home.properties.simple' })}</SquareTextTitle>
-              <SquareTextText>
-              <span style={{ color: '#353535', fontWeight: '400' }}>{formatMessage({ id: 'home.properties.simple-text-highlight' })}</span><br/>
-                {formatMessage({ id: 'home.properties.simple-text' })}
-              </SquareTextText>
-            </SquareText>
-            <square style={{marginLeft: '150px'}}>
-              <SquareImage src="./assets/icon_simple.svg" alt="Yoroi - Simple Our passion" />
-            </square>
-          </Left>
-          </About>
+        <AboutComponent />
           <DeveloperMask>
             <DeveloperOverlay>
               <Developer src="./assets/designAssets/Assets/photos/Developer.jpg" alt="Yoroi - Simple Our passion" />

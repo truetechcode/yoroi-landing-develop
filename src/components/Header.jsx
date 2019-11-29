@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import { inject, observer } from 'mobx-react/index';
-import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import SweetAlert from 'react-bootstrap-sweetalert';
 import { Container } from './../css';
+import { HashLink as Link } from 'react-router-hash-link';
 
 import Plx from "react-plx";
-import Download from './Download';
 
 const data = [
   {
@@ -66,7 +64,6 @@ const NavFixed = styled.div`
   height: 24px;
   font-weight: 500;
   margin: 5px;
-  /* background: #3b95a3; */
   a{    
     display: inline-block;
     text-decoration: none;
@@ -74,9 +71,6 @@ const NavFixed = styled.div`
     img{
       margin-top: -5px;
       margin-left: -65px
-    }
-    &.active{
-      /* border-bottom: 2px solid white; */
     }
     &:link,
     &:visited{
@@ -101,27 +95,22 @@ const VTitleList = styled.div`
   font-size: 15px;
   height: 24px;
   font-weight: 500;
+  z-index: 100;
 
   a{
     text-decoration: none;
     display: inline-block;
     height: 23px;
     
-    &.active{
-      /* border-bottom: 2px solid white;
-      padding-bottom: 0.5px;       */
-    }
-
     &:link,   
     &:visited{
       color: white;
     }
-  }
-  
+  }  
 `;
 
 /*
- * Background<A,B>
+ * Background
  *
  * @media rules
  * to move blue triangle header responsive
@@ -132,73 +121,25 @@ const VTitleList = styled.div`
  */
 const Background = styled.div`
   position: relative;
-  /* width: 2691px;
-  height: ${p => (p.hasOffset ? '1062px' : '1035px')}; */
 
   @media (min-width: 700px) {
-    /* height: ${p => (p.hasOffset ? '1062px' : '1035px')}; */
-    top:  ${p => (p.hasOffset ? '-1275px' : '-120px')}; ;
-    right: ${p => (p.hasOffset ? '640px' : '120px')}; 
-  }
-  @media (max-width: 700px) {
-    /* height: ${p => (p.hasOffset ? '1062px' : '1035px')}; */
-    top: -867px;
-    right: 23px;
+    top: -150px;
+    right: 160px;  
   }
 
-  /* transform: skew(56deg, -31deg);
-  border-radius: 30px; */
+  @media (max-width: 700px) {
+    top: -150px;
+    right: 11px;
+    height: 935px;	
+    width: 1402px;	    
+  }
+
   height: 935px;	
   width: 1402px;	
   transform: scaleX(-1);
-  background-image: url('../assets/designAssets/Assets/photos/start_page.jpg'); /*${p => (p.hasOffset ? 'linear-gradient(82deg, #1a44b7, #4760ff 30%)' : 'linear-gradient(53.05deg, #1D45BA 0%, #1F47BC 6%, #2C51C7 55%, #3154CB 100%)')};*/
+  background-image: url('../assets/designAssets/Assets/photos/start_page.jpg');
   background-size: cover;
   z-index: -3;
-`;
-
-const BackgroundB = styled.div`
-  /* position: relative;
-  width: 2450px;
-  height: ${p => (p.hasOffset ? '270px' : '912px')};
-  border-radius: 30px;
-  transform: skew(56deg, -31deg);
-  background-image: ${p => (p.hasOffset ? 'linear-gradient(82deg, #3256C8, #4760ff 30%)' : 'linear-gradient(51.8deg, #3154CB 0%, rgba(49,84,203,0.97) 10%, rgba(49,84,203,0.87) 25%, rgba(49,84,203,0.71) 43%, rgba(49,84,203,0.49) 63%, rgba(49,84,203,0.21) 85%, rgba(49,84,203,0) 100%)')};
-  z-index: -2;
-  
-  
-  @media (min-width: 700px) {
-    height: ${p => (p.hasOffset ? '926px' : '912px')};
-    top:  ${p => (p.hasOffset ? '-2292px' : '-1880px')}; 
-    right: ${p => (p.hasOffset ? '621px' : '680px')}; 
-  }
-  @media (max-width: 700px) {
-    height: ${p => (p.hasOffset ? '926px' : '912px')};
-    top:  ${p => (p.hasOffset ? '-696px' : '-933px')}; ;
-    right: -31px;
-  } */
-  
-}
-`;
-
-const BackgroundC = styled.div`
-  /* position: relative;
-  width: 2100px;
-  border-radius: 30px;
-  transform: skew(56deg, -31deg);
-  background: ${p => (p.hasOffset ? 'linear-gradient(27deg, rgba(255,255,255,0) 0%, #FFFFFF 100%)' : 'linear-gradient(49.34deg, #4968D6 0%, rgba(69,101,212,0.95) 10%, rgba(59,92,207,0.81) 42%, rgba(52,87,204,0.73) 69%, rgba(50,85,203,0.7) 88%, rgba(50,85,203,0.61) 89%, rgba(49,84,203,0.44) 92%, rgba(49,84,203,0.31) 95%, rgba(49,84,203,0.23) 98%, rgba(49,84,203,0.2) 100%);')}; 
-  z-index: -1;
-
-  @media (min-width: 700px) {
-    top: ${p => (p.hasOffset ? '-3090px' : '-2650px')};
-    height: ${p => (p.hasOffset ? '727px' : '735px')};
-    right: ${p => (p.hasOffset ? '480px' : '560px')};
-  }
-
-  @media (max-width: 700px) {
-    top: ${p => (p.hasOffset ? '-3090px' : '-1343px')};
-    height: ${p => (p.hasOffset ? '727px' : '736px')};
-    right: 480px;
-  } */
 `;
 
 const HeaderText = styled.span`
@@ -227,16 +168,6 @@ const Selector = styled.select`
   border: none;
   background: transparent;
   text-transform: capitalize;
-  /* border: 2px solid #FFFFFF;
-  border-radius: 8px;
-  box-shadow: 0 2px 48px 0 rgba(83,81,81,0.5);
-  color: white;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 18px;
-  padding-left: 16px; 
-  height: 48px;
-  width: 182px;                 */
   cursor: pointer;
   &:after{
     position: absolute;
@@ -248,11 +179,6 @@ const Selector = styled.select`
     border: 6px solid transparent;
     border-color: #fff transparent transparent transparent;    
   }
-  &:hover{    
-    /* background-color: rgba(255,255,255,0.15);
-    box-shadow: 0 2px 48px 0 rgba(83,81,81,0.5); */
-    
-      }
 `;
 
 const HeaderAlt = styled.div`
@@ -269,9 +195,11 @@ const HeaderAltSub = styled.div`
   @media (min-width: 700px) {
     display: none;
   }
+  top: 70px;
+  display: none;  
   width: 100%;
   height: 200px;
-  background-image: linear-gradient(82deg, #1a44b7, #4760ff 30%);
+  background: linear-gradient(41deg, #0C4146 0%, #48A1B0 100%);
   position: absolute;
   padding-top: 40px;
   padding-bottom: 40px;
@@ -287,36 +215,38 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 1,
-      show: false,
+      show: false
     };
-  }
 
+    this.toggleMenu = this.toggleMenu.bind(this)
+  }
+  toggleMenu() {
+    this.setState({
+      show: !this.state.show
+    })
+  }
   isThisHomePage() {
     return this.props.location.pathname === '/';
   }
 
   render() {
-    // Do not show Download on the home page
-    const downloadVisibility = this.isThisHomePage() ? 'hidden' : 'visible';
-
-    const offsetPaths = ['/about', '/faq', '/support', '/terms_and_conditions'];
-    const hasOffset = offsetPaths.some(r => window.location.href.match(r));
+    
+    const showMenu = this.state.show ? {display: ''} : {display: 'none'}
     const _Header = ({ locale, intl: { formatMessage } }) => (
       <HContainer>
-        <HeaderAltSub>
-          {/* <VTitleList>
-            <Link onClick={this.toggleMenu} to="/about">
+        <HeaderAltSub style={showMenu}>
+          <VTitleList>
+            <Link to="/#about">
               {formatMessage({ id: 'header.about' })}
             </Link>
           </VTitleList>
           <VTitleList>
-            <Link onClick={this.toggleMenu} to="/faq/1">
+            <Link to="/#blog">
               {formatMessage({ id: 'header.blog' })}
             </Link>
           </VTitleList>
           <VTitleList>
-            <Link onClick={this.toggleMenu} to="/support">
+            <Link to="/#contact">
               {formatMessage({ id: 'header.contact' })}
             </Link>
           </VTitleList>
@@ -331,8 +261,8 @@ class App extends Component {
               <option value="zh-Hans">简体中文</option>
               <option value="zh-Hant">繁體中文</option>
               <option value="ru">Pусский</option> */}
-  {/*          </Selector>
-          </VTitleList> */}
+           </Selector>
+          </VTitleList>
         </HeaderAltSub>
         <Container>
           <HeaderAlt>
@@ -350,13 +280,19 @@ class App extends Component {
             </VTitleList>
             <div style={{ flex: 2 }} />
             <VTitleList style={{ flex: 0.5, marginTop: '10px' }}>
-              <NavLink to="/about">{formatMessage({ id: 'header.about' })}</NavLink>
+            <Link to="/#about">
+              {formatMessage({ id: 'header.about' })}
+            </Link>
             </VTitleList>
             <VTitleList style={{ flex: 0.5, marginTop: '10px' }}>
-              <NavLink to="/faq/1">{formatMessage({ id: 'header.blog' })}</NavLink>
+            <Link to="/#blog">
+              {formatMessage({ id: 'header.blog' })}
+            </Link>
             </VTitleList>
             <VTitleList style={{ flex: 0.5, marginTop: '10px'}}>
-              <NavLink to="/support">{formatMessage({ id: 'header.contact' })}</NavLink>
+            <Link to="/#contact">
+              {formatMessage({ id: 'header.contact' })}
+            </Link>
             </VTitleList>
             <VTitleList style={{flex: 0.5, marginTop: '10px', zIndex: '15'}}>
               <Selector
@@ -374,20 +310,26 @@ class App extends Component {
             </VTitleList>
             <Plx parallaxData={data} style={navFixed} >
               <Content>
-                <NavFixed onClick={scroll}>
+                <NavFixed>
                   <Link to="/">
                     <Logo src="./assets/designAssets/Assets/svg/EMURGOTEST-logo.svg" alt="Yoroi is a Web Light Wallet for Cardano Secure Fast Simple" />
                   </Link>
                 </NavFixed>
                 <div style={{ flex: 2, marginRight: '45px' }} />
-                <NavFixed style={{ flex: 0.5 }} onClick={scroll}>
-                  <NavLink to="/about">{formatMessage({ id: 'header.about' })}</NavLink>
+                <NavFixed style={{ flex: 0.5 }}>
+                <Link to="/#about">
+              {formatMessage({ id: 'header.about' })}
+            </Link>
                 </NavFixed>
-                <NavFixed style={{ flex: 0.5 }} onClick={scroll}>
-                  <NavLink to="/faq/1">{formatMessage({ id: 'header.blog' })}</NavLink>
+                <NavFixed style={{ flex: 0.5 }}>
+                <Link to="/#blog">
+                  {formatMessage({ id: 'header.blog' })}
+                </Link>
                 </NavFixed>
-                <NavFixed style={{ flex: 0.5 }} onClick={scroll}>
-                  <NavLink to="/support">{formatMessage({ id: 'header.contact' })}</NavLink>
+                <NavFixed style={{ flex: 0.5 }}>
+                <Link to="/#contact">
+                  {formatMessage({ id: 'header.contact' })}
+                </Link>
                 </NavFixed>
                 <NavFixed style={{marginTop: '10px'}}>
                   <Selector 
@@ -407,9 +349,7 @@ class App extends Component {
             </Plx>
           </HeaderText>
         </Container>
-        <Background hasOffset={hasOffset} />
-        <BackgroundB hasOffset={hasOffset} />
-        <BackgroundC hasOffset={hasOffset} />
+        <Background />
       </HContainer>
     );
 

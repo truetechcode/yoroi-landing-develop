@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import { inject, observer } from 'mobx-react/index';
-import ModalVideo from 'react-modal-video';
-import SweetAlert from 'react-bootstrap-sweetalert';
-import { FormattedHTMLMessage } from 'react-intl';
 import styled from 'styled-components';
 
 import { Container, SectionTitle } from '../css';
@@ -15,6 +12,10 @@ const ContactContainer = styled(Container)`
 `;
 
 const ContactForm = styled.div`
+  @media (max-width: 700px) {
+    width: 100%;	
+  }
+
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -22,7 +23,6 @@ const ContactForm = styled.div`
   width: 700px;	
   background-color: #F1F7FA;
   padding: 0 80px;
-  /* align-items: center; */
 `;
 
 const SectionSubTitle = styled.div`
@@ -39,12 +39,20 @@ const SectionSubTitle = styled.div`
     line-height: 28px;
 `;
 const ContactImageMask = styled.div`
+  @media (max-width: 700px) {
+    display: none;
+  }
+
   height: 632px;	
   width: 700px;	
   background-color: #D8D8D8;
 `;
 
 const ContactImage = styled.img`
+  @media (max-width: 700px) {
+    display: none;
+  }
+
   height: 632px;	
   width: 700px;
 `;
@@ -106,7 +114,7 @@ class Contact extends Component {
   render() {
     const _Contact = ({ intl: { formatMessage } }) => {
       return (
-        <ContactContainer>
+        <ContactContainer id="contact">
           <SectionTitle style={{ paddingBottom: '0' }}>
             {formatMessage({ id: 'home.Contact.title' })}
           </SectionTitle>
